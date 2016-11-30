@@ -5,10 +5,10 @@ class Post {
 	String body
 	String author
 	Date dateCreated
-	
-	static belongsTo = [author:User]
-	
-    static constraints = {
 
+	static belongsTo = [author:User]
+
+    static constraints = {
+			body sqlType: 'VARCHAR(1000)'
     }
 }

@@ -79,7 +79,6 @@ grails:
 endpoints:
     jmx:
         unique-names: true
-
 ---
 hibernate:
     cache:
