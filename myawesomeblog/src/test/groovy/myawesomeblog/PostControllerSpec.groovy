@@ -13,6 +13,7 @@ class PostControllerSpec extends Specification {
 		params["title"] = "This is a title"
 		params["body"] = "Words words words"
         params["author"] = "Me"
+        params["dateCreated"] = "SOMETHING"
 		}
 
     void "Test the index action returns the correct model"() {

@@ -9,5 +9,6 @@ class Post {
 	static belongsTo = [author:User]
 	
     static constraints = {
+
     }
 }

@@ -35,13 +35,13 @@
              			<label>Body:</label>
                     	<textarea class="form-control" name="body" type="text" rows="3"></textarea>
                 	</div>
-             		<div>
-             			<label>Author:</label>
-                    	<textarea class="form-control" name="author" type="text" rows="3"></textarea>
-                	</div>
+					<div>
+						<%--HARD CODED CHANGE CHANGE CHANGE LATER --%>
+						<g:hiddenField name="author" value="Calvin"/>
+					</div>
                 </fieldset>
-                <fieldset class="buttons">
-                    <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+                <fieldset class="buttons container">
+                   	<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
                 </fieldset>
             </g:form>
         </div>

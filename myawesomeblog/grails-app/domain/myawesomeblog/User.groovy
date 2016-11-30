@@ -2,18 +2,18 @@ package myawesomeblog
 
 class User {
 	  static constraints = {
-	    login(unique:true)
+	    loginName(unique:true)
 	    password(password:true)
-	    name()
+	    username()
 	  }
-	  
+
 	  static hasMany = [entries:Post]
-	  
-	  String login
+
+	  String loginName
 	  String password
-	  String name
-	  
+	  String username
+
 	  String toString(){
-	    name
+	    username
 	  }
 }
