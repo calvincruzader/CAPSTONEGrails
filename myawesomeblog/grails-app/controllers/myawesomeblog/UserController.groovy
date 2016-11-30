@@ -4,91 +4,91 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-class PostController {
+class UserController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Post.list(params), model:[postCount: Post.count()]
+        respond User.list(params), model:[userCount: User.count()]
     }
 
-    def show(Post post) {
-        respond post
+    def show(User user) {
+        respond user
     }
 
     def create() {
-    	respond new Post(params)
+        respond new User(params)
     }
 
     @Transactional
-    def save(Post post) {
-        if (post == null) {
+    def save(User user) {
+        if (user == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (post.hasErrors()) {
+        if (user.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond post.errors, view:'create'
+            respond user.errors, view:'create'
             return
         }
 
-        post.save flush:true
+        user.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'post.label', default: 'Post'), post.id])
-                redirect post
+                flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), user.id])
+                redirect user
             }
-            '*' { respond post, [status: CREATED] }
+            '*' { respond user, [status: CREATED] }
         }
     }
 
-    def edit(Post post) {
-        respond post
+    def edit(User user) {
+        respond user
     }
 
     @Transactional
-    def update(Post post) {
-        if (post == null) {
+    def update(User user) {
+        if (user == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (post.hasErrors()) {
+        if (user.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond post.errors, view:'edit'
+            respond user.errors, view:'edit'
             return
         }
 
-        post.save flush:true
+        user.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'post.label', default: 'Post'), post.id])
-                redirect post
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), user.id])
+                redirect user
             }
-            '*'{ respond post, [status: OK] }
+            '*'{ respond user, [status: OK] }
         }
     }
 
     @Transactional
-    def delete(Post post) {
+    def delete(User user) {
 
-        if (post == null) {
+        if (user == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        post.delete flush:true
+        user.delete flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'post.label', default: 'Post'), post.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'user.label', default: 'User'), user.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -98,7 +98,7 @@ class PostController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'post.label', default: 'Post'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

@@ -6,6 +6,8 @@ class Post {
 	String author
 	Date dateCreated
 	
+	static belongsTo = [author:User]
+	
     static constraints = {
     }
 }
