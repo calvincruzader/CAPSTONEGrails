@@ -13,7 +13,7 @@ class User {
 	  String password
 	  String username
 
-	  String toString(){
+	  String toString() {
 	    username
 	  }
 }

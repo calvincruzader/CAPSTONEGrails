@@ -7,26 +7,29 @@
     </head>
     <body>
         <a href="#list-post" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
+        <div class="col-xs-12 " role="navigation">
             <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                <li class="col-xs-offset-10 col-xs-2"><g:link class="create" action="create">NEW BACON</g:link></li>
             </ul>
         </div>
+
         <div id="list-post" class="content scaffold-list container col-xs-12" role="main">
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+            <h1>Bringing home the bacon ipsum</h1>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:table collection="${postList}" />
-            <g:each in="${postList}">
-              <p><strong class="blogTitle">${it.title}</strong></p>
-              <p>${it.body}</p>
-              <br/>
-              <p class="col-xs-offset-11 col-xs-1">${it.dateCreated}</p>
-              <hr>
+            <g:each status="i" in="${postList?.reverse()}" var="post">
+              <g:link controller="post" action="show" id="${post.id}">
+                <p><strong class="blogTitle col-xs-12">${post.title}</strong></p>
+              </g:link>
+                <p class="col-xs-10">${post.body}</p>
+                <br/>
+                <p class="col-xs-offset-10 col-xs-2">-${post.author}</p>
+                <p class="col-xs-offset-10 col-xs-2">${post.dateCreated}</p>
+                <hr>
             </g:each>
-            <div class="pagination">
+            <g:link mapping="testMap"></g:link>
+            <div class="pagination container">
                 <g:paginate total="${postCount ?: 0}" />
             </div>
         </div>

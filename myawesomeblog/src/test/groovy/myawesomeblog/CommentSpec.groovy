@@ -6,7 +6,8 @@ import spock.lang.Specification
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-class AdminSpec extends Specification {
+@TestFor(Comment)
+class CommentSpec extends Specification {
 
     def setup() {
     }
@@ -14,8 +15,8 @@ class AdminSpec extends Specification {
     def cleanup() {
     }
 
-    // void "test something"() {
-    //     expect:"fix me"
-    //         true == false
-    // }
+    void "test something"() {
+        expect:"fix me"
+            true == false
+    }
 }

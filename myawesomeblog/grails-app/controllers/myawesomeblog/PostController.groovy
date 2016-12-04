@@ -8,6 +8,11 @@ class PostController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    // def remoteSearch  {
+    //   def todos = Post.findAllByNameLike("${params.value}%")
+    //   render(template:'results', model: [value: params.value, post: post])
+    // }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Post.list(params), model:[postCount: Post.count()]

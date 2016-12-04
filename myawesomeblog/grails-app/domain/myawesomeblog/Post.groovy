@@ -8,7 +8,7 @@ class Post {
 
 	static belongsTo = [author:User]
 
-    static constraints = {
-			body sqlType: 'VARCHAR(1000)'
-    }
+  static constraints = {
+		body sqlType: 'VARCHAR(10000)'
+  }
 }

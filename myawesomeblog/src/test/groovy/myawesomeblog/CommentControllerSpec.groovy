@@ -3,18 +3,17 @@ package myawesomeblog
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(PostController)
-@Mock(Post)
-class PostControllerSpec extends Specification {
+@TestFor(CommentController)
+@Mock(Comment)
+class CommentControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
 
-		params["title"] = "This is a title"
-		params["body"] = "Words words words"
-    params["author"] = "Me"
-    params["dateCreated"] = "SOMETHING"
-		}
+        // TODO: Populate valid properties like...
+        //params["name"] = 'someValidName'
+        assert false, "TODO: Provide a populateValidParams() implementation for this generated test suite"
+    }
 
     void "Test the index action returns the correct model"() {
 
@@ -22,8 +21,8 @@ class PostControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.postList
-            model.postCount == 0
+            !model.commentList
+            model.commentCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -31,7 +30,7 @@ class PostControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.post!= null
+            model.comment!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -39,25 +38,25 @@ class PostControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def post = new Post()
-            post.validate()
-            controller.save(post)
+            def comment = new Comment()
+            comment.validate()
+            controller.save(comment)
 
         then:"The create view is rendered again with the correct model"
-            model.post!= null
+            model.comment!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            post = new Post(params)
+            comment = new Comment(params)
 
-            controller.save(post)
+            controller.save(comment)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/post/show/1'
+            response.redirectedUrl == '/comment/show/1'
             controller.flash.message != null
-            Post.count() == 1
+            Comment.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -69,11 +68,11 @@ class PostControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def post = new Post(params)
-            controller.show(post)
+            def comment = new Comment(params)
+            controller.show(comment)
 
         then:"A model is populated containing the domain instance"
-            model.post == post
+            model.comment == comment
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -85,11 +84,11 @@ class PostControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def post = new Post(params)
-            controller.edit(post)
+            def comment = new Comment(params)
+            controller.edit(comment)
 
         then:"A model is populated containing the domain instance"
-            model.post == post
+            model.comment == comment
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -99,28 +98,28 @@ class PostControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/post/index'
+            response.redirectedUrl == '/comment/index'
             flash.message != null
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def post = new Post()
-            post.validate()
-            controller.update(post)
+            def comment = new Comment()
+            comment.validate()
+            controller.update(comment)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.post == post
+            model.comment == comment
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            post = new Post(params).save(flush: true)
-            controller.update(post)
+            comment = new Comment(params).save(flush: true)
+            controller.update(comment)
 
         then:"A redirect is issued to the show action"
-            post != null
-            response.redirectedUrl == "/post/show/$post.id"
+            comment != null
+            response.redirectedUrl == "/comment/show/$comment.id"
             flash.message != null
     }
 
@@ -131,23 +130,23 @@ class PostControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/post/index'
+            response.redirectedUrl == '/comment/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def post = new Post(params).save(flush: true)
+            def comment = new Comment(params).save(flush: true)
 
         then:"It exists"
-            Post.count() == 1
+            Comment.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(post)
+            controller.delete(comment)
 
         then:"The instance is deleted"
-            Post.count() == 0
-            response.redirectedUrl == '/post/index'
+            Comment.count() == 0
+            response.redirectedUrl == '/comment/index'
             flash.message != null
     }
 }

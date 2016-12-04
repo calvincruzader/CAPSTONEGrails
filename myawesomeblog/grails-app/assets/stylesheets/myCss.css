@@ -1,0 +1,18 @@
+
+#myNavBar > li:last-child {
+  float:right;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#list-post {
+
+  margin: auto;
+}
+
+.comment {
+  margin: auto;
+  
+}
