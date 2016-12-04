@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <asset:stylesheet src="application.css"/>
-    <asset:stylesheet src="myCss.css"/>
+
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -36,6 +36,9 @@
                 <a class="navbar-brand" href="/#">
                   UNDER CONSTRUCTION
                 </a>
+                <!-- <sec:ifLoggedIn>
+                  <g:link class="btn" controller="logout" action="logout"><g:message code="btn.logout" default="Loading&hellip"/></g:link>
+                </sec:ifLoggedIn> -->
             </div>
             <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
                 <ul class="nav navbar-nav navbar-right">

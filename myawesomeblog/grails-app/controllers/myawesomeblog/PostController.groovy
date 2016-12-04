@@ -7,10 +7,14 @@ import grails.transaction.Transactional
 class PostController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
+    //
     // def remoteSearch  {
     //   def todos = Post.findAllByNameLike("${params.value}%")
     //   render(template:'results', model: [value: params.value, post: post])
+    // }
+    // 
+    // def login() {
+    //
     // }
 
     def index(Integer max) {

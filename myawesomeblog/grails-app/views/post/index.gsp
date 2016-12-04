@@ -9,7 +9,12 @@
         <a href="#list-post" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="col-xs-12 " role="navigation">
             <ul>
-                <li class="col-xs-offset-10 col-xs-2"><g:link class="create" action="create">NEW BACON</g:link></li>
+                <sec:ifNotLoggedIn>
+                  <li><g:link type="button" class="create btn btn-primary col-xs-offset-10 col-xs-1" action="create">Login!</g:link></li>
+                </sec:ifNotLoggedIn>
+                <sec:ifAnyGranted roles='ROLE_ADMIN'>
+                  <li class="col-xs-offset-10 col-xs-2"><g:link type="button" class="create btn btn-danger" action="create">NEW BACON</g:link></li>
+                </sec:ifAnyGranted>
             </ul>
         </div>
 

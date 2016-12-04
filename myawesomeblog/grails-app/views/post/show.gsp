@@ -37,18 +37,35 @@
               <fieldset>
                 <hr>
                 <div class="commentDisplay"></div>
+                <hr class="comment-hr">
+                <g:each in="${this.post.comments}">
+                  <div class="">
+                    <span>
+                      <h3>${it.author}</h3>
+                    </span>
+                    <span class="pull-right">
+                      <h4>Posting date: ${it.dateCreated}</h4>
+                    </span>
+                  </div>
+                  <div class="">${it.body}</div>
+                  <hr>
+                  <br>
+                </g:each>
+            </div>
                 <hr>
                 <div class="container">
-                  <div class="col-xs-12">Leave a comment:</div>
-                  <textarea class="col-xs-4" id="commentCreate"></textarea>
-                  <button class="btn btn-primary col-xs-1" id="test" value="submit" action>submit</button>
-                </div>
-                <div class="container">
-                  <g:form name="saveComment" url="[controller: 'Comment', action: 'saveComment']"
-                                update="[success:'results', failure: 'error']" >
-                    <textarea class="col-xs-4" id="commentCreate2"></textarea>
-                    <g:submitButton value="submit" name="submit"/>
-                  </g:form>
+                  <g:formRemote action="saveComment" controller="Comment" name="saveComment" url="[controller:'Comment',action:'saveComment']">
+                    <div class="col-xs-12"><span class="col-xs-2">Leave a comment!</span>
+                      <g:textArea name="body" class="body" params="${[body: body]}" class="col-xs-4" id="commentCreate"></g:textArea>
+                    </div>
+                    <hr>
+                    <div class="col-xs-12">
+                      <span class="col-xs-2">Who are you again?</span>
+                      <g:hiddenField id="commentAuthor" name="author" value="${sec.loggedInUserInfo(field: 'username')}" class="author" params="${[author: author]}"/>
+                    </div>
+                    <g:hiddenField name="title" value="${this.post.title}"/>
+                    <g:submitButton id="test" class="btn btn-primary" value="submit" name="submit"/>
+                  </g:formRemote>
                 </div>
               </fieldset>
             </div>
@@ -56,11 +73,13 @@
 
         <script>
           $("#test").bind("click", function() {
-            $(".commentDisplay").after(commentAppend($('#commentCreate').val()));
+            var hi = $('#commentCreate').val();
+            var hello = $('#commentAuthor').val();
+            $(".commentDisplay").after(commentAppend(hi, hello));
           });
 
-          function commentAppend(comment) {
-            return "<div class=\"comment col-xs-12\">"+ comment +"</div><br>"
+          function commentAppend(comment, author) {
+            return "<div class=\"comment col-xs-12\">"+ comment +"</div><br>" + author;
           }
         </script>
     </body>

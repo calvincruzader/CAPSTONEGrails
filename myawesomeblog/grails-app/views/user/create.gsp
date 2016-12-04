@@ -27,7 +27,18 @@
             </g:hasErrors>
             <g:form action="save">
                 <fieldset class="form">
-                    <f:all bean="user"/>
+                  <div class="col-xs-offset-5 col-xs-2">
+                    <label>Login Name:</label>
+                 		<input name="loginName" type="text">
+                 	</div>
+                  <div class="col-xs-offset-5 col-xs-2">
+                    <label>Password:</label>
+                    <input name="password" type="text">
+                  </div>
+                  <div class="col-xs-offset-5 col-xs-2">
+                    <label>Username:</label>
+                    <input name="username" type="text">
+                  </div>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

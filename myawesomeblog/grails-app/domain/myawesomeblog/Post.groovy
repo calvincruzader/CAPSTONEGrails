@@ -7,8 +7,11 @@ class Post {
 	Date dateCreated
 
 	static belongsTo = [author:User]
+	static hasMany = [comments:Comment]
 
   static constraints = {
-		body sqlType: 'VARCHAR(10000)'
+		title(black: false)
+		author(nullable: true)
+		body sqlType: 'text'
   }
 }

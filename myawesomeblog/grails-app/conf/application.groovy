@@ -8,6 +8,7 @@ grails.plugin.springsecurity.fii.rejectPublicInvocations = false
 grails.plugin.springsecurity.logout.postOnly = false
 // grails.plugins.springsecurity.successHandler.defaultTargetUrl = '/action/controller '
 // grails.plugins.springsecurity.ui.register.postRegisterUrl = '/action/controller '
+grails.plugin.springsecurity.logout.afterLogoutUrl = '/post/index'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 
 	[pattern: '/post/index',     access: ['permitAll']],
@@ -16,9 +17,8 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/post/save',      access: ['ROLE_ADMIN']],
 	[pattern: '/post/show',      access: ['permitAll']],
 	[pattern: '/user/create',    access: ['permitAll']],
-	[pattern: '/',               access: ['permitAll']],
-	[pattern: '/',               access: ['permitAll']],
-	[pattern: '/',               access: ['permitAll']],
+	[pattern: '/user/show',      access: ['permitAll']],
+	[pattern: '/comment/saveComment', access: ['permitAll']],
 
 
 	[pattern: '/',               access: ['permitAll']],

@@ -13,10 +13,12 @@ class CommentController {
         respond Comment.list(params), model:[commentCount: Comment.count()]
     }
 
-    // def saveComment() {
-    //   BlogPost blogpost = BlogPost.findByTitle(params.title)
-    //   blogpost.addToComments
-    // }
+    @Transactional
+    def saveComment() {
+      Post blogpost = Post.findByTitle(params.title)
+      blogpost.addToComments(new Comment(author:params.author,body:params.body)).save()
+      redirect(controller: "Post", action: "Show", id:blogpost.id)
+    }
 
     def show(Comment comment) {
         respond comment
