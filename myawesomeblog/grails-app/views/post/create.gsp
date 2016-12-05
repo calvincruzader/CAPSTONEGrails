@@ -27,22 +27,21 @@
           </g:hasErrors>
           <g:form action="save">
               <fieldset class="form col-xs-12">
-              <div>
-                <label>Title:</label>
-             		<input class="form-control" name="title" type="text">
-             	</div>
-             	<div>
-             	  <label>Body:</label>
-                <textarea class="form-control" name="body" type="text" rows="3"></textarea>
-              </div>
-					    <div>
+                <div>
+                  <label>Title:</label>
+             		   <input class="form-control" name="title" type="text">
+             	   </div>
+             	   <div>
+             	     <label>Body:</label>
+                   <textarea class="form-control" name="body" type="text" rows="3"></textarea>
+                 </div>
+					       <div>
 						      <%--HARD CODED CHANGE CHANGE CHANGE LATER --%>
-						    <g:hiddenField name="author" value="Calvin"/>
-					    </div>
+						      <g:hiddenField name="author" value="Calvin"/>
+					      </div>
               </fieldset>
               <br>
               <fieldset class="buttons btn-toolbar">
-
               <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
               </fieldset>
             </g:form>

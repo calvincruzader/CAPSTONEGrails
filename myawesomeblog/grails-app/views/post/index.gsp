@@ -10,10 +10,10 @@
         <div class="col-xs-12 " role="navigation">
             <ul>
                 <sec:ifNotLoggedIn>
-                  <li><g:link type="button" class="create btn btn-primary col-xs-offset-10 col-xs-1" action="create">Login!</g:link></li>
+                  <li><g:link type="button" class="create btn btn-primary col-xs-offset-10 col-xs-1" action="create">New Post!</g:link></li>
                 </sec:ifNotLoggedIn>
                 <sec:ifAnyGranted roles='ROLE_ADMIN'>
-                  <li class="col-xs-offset-10 col-xs-2"><g:link type="button" class="create btn btn-danger" action="create">NEW BACON</g:link></li>
+                  <li class="col-xs-offset-10 col-xs-2"><g:link type="button" class="create btn btn-primary" action="create">New Post!</g:link></li>
                 </sec:ifAnyGranted>
             </ul>
         </div>
@@ -23,8 +23,17 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <g:each status="i" in="${postList?.reverse()}" var="post">
-              <g:link controller="post" action="show" id="${post.id}">
+            <!-- <g:formRemote action="searchBlogs" controller="Post" name="searchBlogs" url="[controller: 'Post',action: 'searchBlogs']"> -->
+              <!-- <div><span>Search By Title:</span>
+
+                <g:textField name="searchQuery" params="${[searchQuery: searchQuery]}"></g:textField>
+              </div> -->
+              <g:submitButton class="btn btn-info" value="submit" name="submit"/>
+            <!-- </g:formRemote> -->
+            <g:each status="i" in="${this.postList?.reverse()}" var="post">
+              <!-- <g:if test="post.contains('${post.searchQuery}')">
+              </g:if> -->
+              <g:link mapping='testFriendlyURL' params='[title: "${post.title}"]' id="${post.id}">
                 <p><strong class="blogTitle col-xs-12">${post.title}</strong></p>
               </g:link>
                 <p class="col-xs-10">${post.body}</p>
