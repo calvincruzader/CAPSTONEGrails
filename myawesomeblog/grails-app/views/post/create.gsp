@@ -38,6 +38,7 @@
 					       <div>
 						      <%--HARD CODED CHANGE CHANGE CHANGE LATER --%>
 						      <g:hiddenField name="author" value="Calvin"/>
+                  <g:hiddenField name="dateCreated" value="${new Date()}"/>
 					      </div>
               </fieldset>
               <br>

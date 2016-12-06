@@ -2,20 +2,18 @@ package myawesomeblog
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.converters.JSON
 
 @Transactional(readOnly = true)
 class PostController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    // @Transactional
-    // def searchBlogs() {
-    //   def posts = Post.findAllByTitle(params.searchQuery).toList();
-    //   for (post in posts) {
-    //
-    //   }
-    //   respond Post.list()
-    // }
+
+    def searchBlogs() {
+      def postList = Post.findAllByTitleIlike("%" + params.searchText + "%")
+      render(view:'index', model: [postList: postList])
+    }
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)

@@ -23,29 +23,28 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <!-- <g:formRemote action="searchBlogs" controller="Post" name="searchBlogs" url="[controller: 'Post',action: 'searchBlogs']"> -->
-              <!-- <div><span>Search By Title:</span>
+            <g:form name="searchBlogs" url="[controller:'Post',action:'searchBlogs']">
+              <div><span>Search By Title:</span>
+                <g:textField name="searchText" id="searchText" params="${[searchText: searchText]}"></g:textField>
+              </div>
+              <g:submitButton id="aTest" class="btn btn-info" value="searchButton" name="searchButton"/>
+            </g:form>
 
-                <g:textField name="searchQuery" params="${[searchQuery: searchQuery]}"></g:textField>
-              </div> -->
-              <g:submitButton class="btn btn-info" value="submit" name="submit"/>
-            <!-- </g:formRemote> -->
-            <g:each status="i" in="${this.postList?.reverse()}" var="post">
-              <!-- <g:if test="post.contains('${post.searchQuery}')">
-              </g:if> -->
-              <g:link mapping='testFriendlyURL' params='[title: "${post.title}"]' id="${post.id}">
-                <p><strong class="blogTitle col-xs-12">${post.title}</strong></p>
-              </g:link>
-                <p class="col-xs-10">${post.body}</p>
-                <br/>
-                <p class="col-xs-offset-10 col-xs-2">-${post.author}</p>
-                <p class="col-xs-offset-10 col-xs-2">${post.dateCreated}</p>
-                <hr>
-            </g:each>
-            <g:link mapping="testMap"></g:link>
+              <g:each in="${this.postList?.reverse()}" name="defaultList" var="post" status="i">
+
+                <g:link mapping="searchFriendlyURL" params='[title: "${post.title}"]' id="${post.id}">
+                  <p><strong class="blogTitle col-xs-12">${post.title}</strong></p>
+                </g:link>
+                  <p class="col-xs-10">${post.body}</p>
+                  <br/>
+                  <p class="col-xs-offset-10 col-xs-2">-${post.author}</p>
+                  <p class="col-xs-offset-10 col-xs-2">${post.dateCreated}</p>
+                  <hr>
+                </g:each>
             <div class="pagination container">
                 <g:paginate total="${postCount ?: 0}" />
             </div>
         </div>
+
     </body>
 </html>

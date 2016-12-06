@@ -63,7 +63,7 @@
                       <g:hiddenField id="commentAuthor" name="author" value="${sec.loggedInUserInfo(field: 'username')}" params="${[author: author]}"/>
                     </div>
                     <g:hiddenField name="title" value="${this.post.title}"/>
-                    <g:submitButton id="test" class="btn btn-primary col-xs-offset-8" value="submit" name="submit"/>
+                    <g:submitButton id="makeComment" class="btn btn-primary col-xs-offset-8" value="submit" name="submit"/>
                   </g:formRemote>
                 </div>
               </fieldset>
@@ -71,11 +71,11 @@
         </div>
 
         <script>
-          $("#test").bind("click", function() {
-            var hi = $('#commentCreate').val();
-            var hello = $('#commentAuthor').val();
+          $("#makeComment").bind("click", function() {
+            var comment = $('#commentCreate').val();
+            var commentAuthor = $('#commentAuthor').val();
             var dateCreated = new Date();
-            $(".commentDisplay").after(commentAppend(hi, hello, dateCreated.toDateString()));
+            $(".commentDisplay").after(commentAppend(comment, commentAuthor, dateCreated.toDateString()));
           });
 
           function commentAppend(comment, author, date) {
