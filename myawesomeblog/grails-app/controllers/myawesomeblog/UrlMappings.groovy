@@ -13,9 +13,10 @@ class UrlMappings {
         "500"(view:'/error')
         "404"(view:'/notFound')
 
-        name searchFriendlyURL: "/calvins-blogs/cool-thoughts/$title/" {
+        name searchEngineFriendlyURL: "/calvins-blogs/cool-thoughts/$title/" {
           controller = 'Post'
           action = 'show'
         }
+        
     }
 }

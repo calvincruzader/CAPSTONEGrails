@@ -8,9 +8,12 @@
     <body>
         <a href="#list-post" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="col-xs-12 " role="navigation">
+          <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_USER'>
+            <g:link controller='logout'>Logout</g:link>
+          </sec:ifAnyGranted>
             <ul>
                 <sec:ifNotLoggedIn>
-                  <li><g:link type="button" class="create btn btn-primary col-xs-offset-10 col-xs-1" action="create">New Post!</g:link></li>
+                  <li><g:link type="button" class="create btn btn-primary col-xs-offset-10 col-xs-1" action="create">Log in!</g:link></li>
                 </sec:ifNotLoggedIn>
                 <sec:ifAnyGranted roles='ROLE_ADMIN'>
                   <li class="col-xs-offset-10 col-xs-2"><g:link type="button" class="create btn btn-primary" action="create">New Post!</g:link></li>
@@ -32,7 +35,7 @@
 
               <g:each in="${this.postList?.reverse()}" name="defaultList" var="post" status="i">
 
-                <g:link mapping="searchFriendlyURL" params='[title: "${post.title}"]' id="${post.id}">
+                <g:link mapping="searchEngineFriendlyURL" params='[title: "${post.title}"]' id="${post.id}">
                   <p><strong class="blogTitle col-xs-12">${post.title}</strong></p>
                 </g:link>
                   <p class="col-xs-10">${post.body}</p>
