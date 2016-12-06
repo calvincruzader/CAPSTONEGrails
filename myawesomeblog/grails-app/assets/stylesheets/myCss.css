@@ -18,10 +18,15 @@ ul {
 }
 
 .loginBtn {
-  color: white;
+  color: black;
 }
 
-.logoutBtn {
-  width: 90px;
-  height: 40px;
+.seperatorHr {
+  color: dimgrey;
+  border: solid 2px dimgrey;
+  height: 5px;
+}
+
+body {
+    padding-bottom: 100px;
 }

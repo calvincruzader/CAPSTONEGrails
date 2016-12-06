@@ -26,7 +26,7 @@
   <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script> -->
 
   <meta name="layout" content="main">
-  <link rel="stylesheet" href="${resource(dir: 'css', file: 'loginStyles.css')}" type="text/css">
+
   <style type="text/css" media="screen">
 
   </style>

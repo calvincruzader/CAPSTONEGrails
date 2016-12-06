@@ -65,7 +65,7 @@
 
     <asset:javascript src="application.js"/>
 
-    <g:form name="searchBlogs" url="[controller:'Post',action:'searchBlogs']">
+    <g:form id="searchTitlesById" name="searchBlogs" url="[controller:'Post',action:'searchBlogs']">
       <div><span>Search By Title:</span>
         <g:textField name="searchText" id="searchText"></g:textField>
         <g:submitButton name="searchButton" class="btn btn-info" value="searchButton"/>
@@ -77,10 +77,11 @@
     console.log(window.location.href);
     $(function toggleLoginButton() {
           if (window.location.href == "http://localhost:8080/login/auth") {
-                console.log("hihsdihfiahf;asdjf;sad");
+                $('#searchTitlesById').hide();
                 $('#loginButton').hide();
           } else {
                 $('#loginButton').show();
+                $('#searchTitlesById').show();
           }
      });
     </script>

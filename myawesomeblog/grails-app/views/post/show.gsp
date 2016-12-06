@@ -12,14 +12,20 @@
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
                 <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                <span ><sec:ifAnyGranted roles='ROLE_ADMIN'>
+                  <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                </sec:ifAnyGranted></span>
+
             </ul>
 
           <g:form resource="${this.post}" method="DELETE">
+          <span ><sec:ifAnyGranted roles='ROLE_ADMIN'>
+
             <fieldset class="buttons">
                 <g:link class="edit" action="edit" resource="${this.post}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                 <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
             </fieldset>
+          </sec:ifAnyGranted></span>
           </g:form>
         </div>
         <div id="show-post" class="content scaffold-show" role="main">
@@ -33,7 +39,7 @@
               <p class="col-xs-2 col-xs-offset-10">${post.author}</p>
               <p class="col-xs-2 col-xs-offset-10">${post.dateCreated}</p>
             </div>
-            <hr><hr>
+            <hr class="seperatorHr">
             <div class = "container">
               <fieldset>
                 <span>Comments:</span>
@@ -86,6 +92,7 @@
              + "<span class=\"pull-right\"><h5>Posting date:" + date + "</h5></span><br><hr>";
           }
         </script>
+
     </body>
 
 </html>
