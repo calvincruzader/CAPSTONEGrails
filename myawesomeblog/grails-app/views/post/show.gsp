@@ -33,8 +33,10 @@
               <p class="col-xs-2 col-xs-offset-10">${post.author}</p>
               <p class="col-xs-2 col-xs-offset-10">${post.dateCreated}</p>
             </div>
+            <hr><hr>
             <div class = "container">
               <fieldset>
+                <span>Comments:</span>
                 <hr>
                 <div class="commentDisplay"></div>
                 <hr>

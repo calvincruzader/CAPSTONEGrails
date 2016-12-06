@@ -20,6 +20,8 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script> -->
+  <link rel="stylesheet" href="${resource(dir: 'css', file: 'loginStyles.css')}" type="text/css">
+  <link rel="stylesheet" href="${resource(dir: 'css', file: 'myCss.css')}" type="text/css">
     <g:layoutHead/>
 </head>
 <body>
@@ -27,6 +29,13 @@
     <div class="navbar navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
+                <span ><sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_USER'>
+                  <g:link class="btn btn-info logoutBtn" controller='logout'>Logout</g:link>
+                </sec:ifAnyGranted></span>
+              <span><sec:ifNotLoggedIn>
+
+                <span id="loginButton"><g:link type="button" class="create btn btn-primary" action="login">Log in</g:link></span>
+              </sec:ifNotLoggedIn></span>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -34,7 +43,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/#">
-                  UNDER CONSTRUCTION
+                  BLOG UNDER CONSTRUCTION
                 </a>
                 <!-- <sec:ifLoggedIn>
                   <g:link class="btn" controller="logout" action="logout"><g:message code="btn.logout" default="Loading&hellip"/></g:link>
@@ -47,16 +56,35 @@
             </div>
         </div>
     </div>
-
-    <g:layoutBody/>
-
     <div class="footer" role="contentinfo"></div>
+
 
     <div id="spinner" class="spinner" style="display:none;">
         <g:message code="spinner.alt" default="Loading&hellip;"/>
     </div>
 
     <asset:javascript src="application.js"/>
+
+    <g:form name="searchBlogs" url="[controller:'Post',action:'searchBlogs']">
+      <div><span>Search By Title:</span>
+        <g:textField name="searchText" id="searchText"></g:textField>
+        <g:submitButton name="searchButton" class="btn btn-info" value="searchButton"/>
+      </div>
+    </g:form>
+
+    <g:layoutBody/>
+    <script>
+    console.log(window.location.href);
+    $(function toggleLoginButton() {
+          if (window.location.href == "http://localhost:8080/login/auth") {
+                console.log("hihsdihfiahf;asdjf;sad");
+                $('#loginButton').hide();
+          } else {
+                $('#loginButton').show();
+          }
+     });
+    </script>
+
 
 </body>
 </html>

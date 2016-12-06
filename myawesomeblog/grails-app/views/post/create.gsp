@@ -36,9 +36,9 @@
                    <textarea class="form-control" name="body" type="text" rows="3"></textarea>
                  </div>
 					       <div>
-						      <%--HARD CODED CHANGE CHANGE CHANGE LATER --%>
-						      <g:hiddenField name="author" value="Calvin"/>
-                  <g:hiddenField name="dateCreated" value="${new Date()}"/>
+                   ${new Date()}
+						      <g:hiddenField name="author" value="${sec.loggedInUserInfo(field: 'username')}"/>
+                  <g:hiddenField name="dateCreated" value="'${new Date()}'"/>
 					      </div>
               </fieldset>
               <br>

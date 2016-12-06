@@ -20,3 +20,8 @@ ul {
 .loginBtn {
   color: white;
 }
+
+.logoutBtn {
+  width: 90px;
+  height: 40px;
+}

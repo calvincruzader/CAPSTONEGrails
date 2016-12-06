@@ -6,6 +6,8 @@ class Post {
 	String author
 	Date dateCreated
 
+	private static final BLOG_PREVIEW_MAX_CHARACTERS = 500;
+
 	static belongsTo = [author:User]
 	static hasMany = [comments:Comment, posts: Post]
 
@@ -15,4 +17,12 @@ class Post {
 		body(nullable: false)
 		body sqlType: 'text'
   }
+
+	def blogBodyPreview() {
+		String preview = body.take(BLOG_PREVIEW_MAX_CHARACTERS)
+		if (preview.length() == BLOG_PREVIEW_MAX_CHARACTERS) {
+			preview += "...";
+		}
+		return preview;
+	}
 }
