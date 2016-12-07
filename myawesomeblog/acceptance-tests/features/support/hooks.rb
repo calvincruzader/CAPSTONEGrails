@@ -6,9 +6,9 @@ require 'date'
 include PageObject::PageFactory
 
 Before do
-  @browser = Water::Browser.new :firefox
+  @browser = Watir::Browser.new :firefox
 end
 
 After do
-  @browser.close 
+  @browser.close
 end

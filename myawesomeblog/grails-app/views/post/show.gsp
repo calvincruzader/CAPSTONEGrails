@@ -29,9 +29,8 @@
           </g:form>
         </div>
         <div id="show-post" class="content scaffold-show" role="main">
-            <h1>My Latest, Greatest Thoughts </h1>
             <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
+              <div class="message" role="status">${flash.message}</div>
             </g:if>
             <div class="container blogPostShow">
               <h2 class="col-xs-12">${post.title}</h2>

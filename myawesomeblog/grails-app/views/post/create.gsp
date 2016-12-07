@@ -26,26 +26,26 @@
         </ul>
           </g:hasErrors>
           <g:form action="save">
-              <fieldset class="form col-xs-12">
-                <div>
-                  <label>Title:</label>
-             		   <input class="form-control" name="title" type="text">
-             	   </div>
-             	   <div>
-             	     <label>Body:</label>
-                   <textarea class="form-control" name="body" type="text" rows="3"></textarea>
-                 </div>
-                 <br>
-					       <div>
-						      <g:hiddenField name="author" value="${sec.loggedInUserInfo(field: 'username')}"/>
-                  <g:hiddenField name="dateCreated" value="'${new Date()}'"/>
-					      </div>
-              </fieldset>
-              <br>
-              <fieldset class="buttons btn-toolbar">
-              <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-              </fieldset>
-            </g:form>
+            <fieldset class="form col-xs-12">
+              <div>
+                <label>Title:</label>
+           		   <input class="form-control" name="title" type="text">
+           	   </div>
+           	   <div>
+           	     <label>Body:</label>
+                 <textarea class="form-control" name="body" type="text" rows="3"></textarea>
+               </div>
+               <br>
+					     <div>
+					      <g:hiddenField name="author" value="${sec.loggedInUserInfo(field: 'username')}"/>
+              <g:hiddenField name="dateCreated" value="'${new Date()}'"/>
+				      </div>
+            </fieldset>
+          <br>
+            <fieldset class="buttons btn-toolbar">
+            <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+            </fieldset>
+          </g:form>
         </div>
     </body>
 </html>

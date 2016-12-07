@@ -51,7 +51,6 @@ ul {
 .newPostLocation {
   margin-top: 15px;
   padding-bottom: 20px;
-  margin: 0px 0px 0px 519px;
 }
 
 .showBody {
@@ -71,6 +70,8 @@ fieldset {
 
 .blogPostShow {
   background-color: white;
+  margin-top: 20px;
+
 }
 
 #list-post {
@@ -105,7 +106,8 @@ fieldset {
   height: 50px;
   width: 150px;
   text-align: center;
-  padding-top: 13px;
+  padding-top: 8px;
+  font-size: 20px;
 }
 
 .noPosts {
