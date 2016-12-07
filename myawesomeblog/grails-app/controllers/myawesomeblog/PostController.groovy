@@ -12,7 +12,8 @@ class PostController {
 
     def searchBlogs() {
       def postList = Post.findAllByTitleIlike("%" + params.searchText + "%")
-      render(view:'index', model: [postList: postList])
+      String searchText = params.searchText
+      render(view:'index', model: [postList: postList, searchText: searchText])
     }
 
     def index(Integer max) {

@@ -27,14 +27,15 @@
 <body>
 
     <div class="navbar navbar-static-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
+        <div class="myContainer">
+          <g:form id="searchTitlesById" name="searchBlogs" url="[controller:'Post',action:'searchBlogs']">
+          </g:form>
+            <div>
                 <span ><sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_USER'>
-                  <g:link class="btn btn-info logoutBtn" controller='logout'>Logout</g:link>
+                  <g:link class="btn btn-default logoutBtn col-xs-2" controller='logout'>Logout</g:link>
                 </sec:ifAnyGranted></span>
               <span><sec:ifNotLoggedIn>
-
-                <span id="loginButton"><g:link type="button" class="create btn btn-primary" action="login">Log in</g:link></span>
+                <span id="loginButton"><g:link type="button" class="create btn btn-default logoutBtn col-xs-2" action="login">Log in</g:link></span>
               </sec:ifNotLoggedIn></span>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -43,21 +44,16 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/#">
-                  BLOG UNDER CONSTRUCTION
+                  Calvin's Blog
                 </a>
-                <!-- <sec:ifLoggedIn>
-                  <g:link class="btn" controller="logout" action="logout"><g:message code="btn.logout" default="Loading&hellip"/></g:link>
-                </sec:ifLoggedIn> -->
-            </div>
-            <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
-                <ul class="nav navbar-nav navbar-right">
-                    <g:pageProperty name="page.nav" />
-                </ul>
+                <div></div>
+                <span >
+                  <g:textField class="searchTextGroup col-xs-5" name="searchText" id="searchText"></g:textField>
+                  <g:submitButton class="searchTextGroup" name="searchButton" class="btn btn-info searchBtn" value="search"/>
+                </span>
             </div>
         </div>
     </div>
-    <div class="footer" role="contentinfo"></div>
-
 
     <div id="spinner" class="spinner" style="display:none;">
         <g:message code="spinner.alt" default="Loading&hellip;"/>
@@ -65,18 +61,13 @@
 
     <asset:javascript src="application.js"/>
 
-    <g:form id="searchTitlesById" name="searchBlogs" url="[controller:'Post',action:'searchBlogs']">
-      <div><span>Search By Title:</span>
-        <g:textField name="searchText" id="searchText"></g:textField>
-        <g:submitButton name="searchButton" class="btn btn-info" value="searchButton"/>
-      </div>
-    </g:form>
+    <hr>
+
 
     <g:layoutBody/>
     <script>
-    console.log(window.location.href);
     $(function toggleLoginButton() {
-          if (window.location.href == "http://localhost:8080/login/auth") {
+          if (window.location.href == "http://localhost:8080/login/auth" || window.location.href == "http://localhost:8080/login/auth?login_error=1") {
                 $('#searchTitlesById').hide();
                 $('#loginButton').hide();
           } else {
@@ -86,6 +77,6 @@
      });
     </script>
 
-
+    <div class="footer" role="contentinfo"></div>
 </body>
 </html>

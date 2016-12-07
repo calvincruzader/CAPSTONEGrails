@@ -12,7 +12,7 @@ class BootStrap {
       def userRole = new SecRole(authority: 'ROLE_USER').save()
 
       def testAdmin = new SecUser(username: 'CalvinCruzader', password: 'password').save()
-      def testUser = new SecUser(username: 'aUser', password: 'user').save()
+      def testUser = new SecUser(username: 'user', password: 'user').save()
 
       SecUserSecRole.create testAdmin, adminRole
       SecUserSecRole.create testUser, userRole

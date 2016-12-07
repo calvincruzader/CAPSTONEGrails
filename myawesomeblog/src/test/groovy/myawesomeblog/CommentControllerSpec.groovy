@@ -52,10 +52,11 @@ class CommentControllerSpec extends Specification {
             response.reset()
             populateValidParams(params)
             comment = new Comment(params)
-
+            comment.validate()
             controller.save(comment)
 
         then:"A redirect is issued to the show action"
+            println response.redirectedUrl
             response.redirectedUrl == '/comment/show/1'
             controller.flash.message != null
             Comment.count() == 1

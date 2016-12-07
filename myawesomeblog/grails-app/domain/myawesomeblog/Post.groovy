@@ -6,7 +6,7 @@ class Post {
 	String author
 	Date dateCreated
 
-	private static final BLOG_PREVIEW_MAX_CHARACTERS = 500;
+	private static final BLOG_PREVIEW_MAX_CHARACTERS = 1000;
 
 	static belongsTo = [author:User]
 	static hasMany = [comments:Comment, posts: Post]

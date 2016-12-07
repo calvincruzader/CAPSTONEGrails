@@ -17,8 +17,37 @@ ul {
 
 }
 
-.loginBtn {
-  color: black;
+.searchBtn{
+  height: 32px;
+  padding-top: 3.5px;
+  text-align: center;
+  margin-top: 7px;
+}
+
+.homeAndPostList{
+  margin-left: 1%;
+}
+
+.myContainer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.searchTextGroup {
+  margin: 9px 5px;
+}
+
+.newPostBtn {
+  height: 50px;
+  width: 150px;
+  text-align: center;
+  padding-top: 13px;
+  float: right;
+}
+
+.logoutBtn {
+  float: right;
+  margin-top: 6px;
 }
 
 .seperatorHr {
