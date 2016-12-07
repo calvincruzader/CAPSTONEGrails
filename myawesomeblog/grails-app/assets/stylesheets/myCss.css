@@ -1,10 +1,53 @@
-
-#myNavBar > li:last-child {
-  float:right;
+body {
+  background-color: #E9E9E9;
 }
 
 ul {
   list-style-type: none;
+}
+
+.commentBox {
+  padding-bottom: 20px;
+}
+
+.commentAndCancelBtns {
+    margin: 0px 0px 0px 965px;
+}
+
+#commentCreate {
+  width: 66em;
+  height: 10em;
+}
+
+.commentBtn {
+  visibility: hidden;
+}
+
+.cancelBtn {
+  visibility: hidden;
+}
+
+.newPostLocation {
+  padding-bottom: 20px;
+}
+
+.showBody {
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+#list-post {
+  background-color: white;
+}
+
+fieldset {
+  background-color: white;
+  padding: 50px 50px 50px 50px;
+
+}
+
+.blogPostShow {
+  background-color: white;
 }
 
 #list-post {
@@ -52,7 +95,7 @@ ul {
   font-weight: bold;
 }
 
-.loginOrOutBtn {  
+.loginOrOutBtn {
   float: right;
   margin-top: 6px;
   color: black;

@@ -10,10 +10,10 @@
         <a href="#show-post" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+                <li><a class="home btn btn-default" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+                <li><g:link class="list btn btn-default" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
                 <span ><sec:ifAnyGranted roles='ROLE_ADMIN'>
-                  <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                  <li><g:link class="create btn btn-default" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
                 </sec:ifAnyGranted></span>
 
             </ul>
@@ -33,15 +33,15 @@
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <div class="container">
+            <div class="container blogPostShow">
               <h2 class="col-xs-12">${post.title}</h2>
-              <p class="col-xs-12">${post.body}</p>
+              <p class="col-xs-12 showBody">${post.body}</p>
               <p class="col-xs-2 col-xs-offset-10">${post.author}</p>
               <p class="col-xs-2 col-xs-offset-10">${post.dateCreated}</p>
             </div>
             <hr class="seperatorHr">
             <div class = "container">
-              <fieldset>
+              <fieldset >
                 <span>Comments:</span>
                 <hr>
                 <div class="commentDisplay"></div>
@@ -61,17 +61,20 @@
                 </g:each>
             </div>
                 <hr>
-                <div class="container">
+                <div class="container blogPostShow commentBox">
                   <g:formRemote action="saveComment" controller="Comment" name="saveComment" url="[controller:'Comment',action:'saveComment']">
-                    <div class="col-xs-12"><span class="col-xs-2">Leave a comment!</span>
-                      <g:textArea name="body" params="${[body: body]}" class="col-xs-4" id="commentCreate"></g:textArea>
-                    </div>
+                    <div class="col-xs-12"><span class="col-xs-2">${sec.loggedInUserInfo(field: 'username')}:</span>
+                    <g:textArea name="body" class="col-xs-6" id="commentCreate" placeholder="Leave a public comment..."></g:textArea></div>
+
                     <hr>
                     <div class="col-xs-12">
                       <g:hiddenField id="commentAuthor" name="author" value="${sec.loggedInUserInfo(field: 'username')}" params="${[author: author]}"/>
                     </div>
                     <g:hiddenField name="title" value="${this.post.title}"/>
-                    <g:submitButton id="makeComment" class="btn btn-primary col-xs-offset-8" value="submit" name="submit"/>
+                    <div class="commentAndCancelBtns">
+                      <g:submitButton class="cancelBtn btn btn-default" value='Cancel' name='Cancel'/>
+                      <g:submitButton id="makeComment" class="btn btn-primary commentBtn" value="Comment" name="Comment"/>
+                    </div>
                   </g:formRemote>
                 </div>
               </fieldset>
@@ -79,6 +82,14 @@
         </div>
 
         <script>
+          $('#commentCreate').focus(function() {
+            $("#makeComment").css('visibility', 'visible');
+            $(".cancelBtn").css('visibility', 'visible');
+          });
+          $('.cancelBtn').click(function(){
+            $('#commentCreate').val('');
+          });
+
           $("#makeComment").bind("click", function() {
             var comment = $('#commentCreate').val();
             var commentAuthor = $('#commentAuthor').val();

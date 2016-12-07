@@ -7,7 +7,7 @@
       </head>
       <body>
           <a href="#list-post" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-          <div class="container" role="navigation">
+          <div class="newPostLocation container" role="navigation">
               <ul>
 
                   <sec:ifAnyGranted roles='ROLE_ADMIN'>
@@ -17,7 +17,7 @@
           </div>
 
           <div id="list-post" class="content scaffold-list container col-xs-12" role="main">
-              <h1 class="blogHomeTitle">A Collection of Some of My Musings</h1><br><br>
+              <h1 class="blogHomeTitle">A Collection of Some of My Musings</h1><br><hr><br>
               <g:if test="${flash.message}">
                   <div class="message" role="status">${flash.message}</div>
               </g:if>

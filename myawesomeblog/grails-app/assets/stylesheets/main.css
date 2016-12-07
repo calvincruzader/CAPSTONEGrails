@@ -88,7 +88,7 @@ img {
 }
 
 .footer {
-    background: purple;
+    background: white;
     color: #000;
     clear: both;
     font-size: 2em;
@@ -496,7 +496,7 @@ th:hover, tr:hover {
 /* ACTION BUTTONS */
 
 .buttons {
-    background-color: #efefef;
+    background-color: white;
     overflow: hidden;
     padding: 0.3em;
     -moz-box-shadow: 0 0 3px 1px #aaaaaa;

@@ -47,10 +47,12 @@
                   Calvin's Blog
                 </a>
                 <div></div>
-                <span >
-                  <g:textField class="searchTextGroup col-xs-5" name="searchText" id="searchText"></g:textField>
-                  <g:submitButton class="searchTextGroup" name="searchButton" class="btn btn-info searchBtn" value="search"/>
-                </span>
+                <g:form name="searchBlogs" url="[action:'searchBlogs',controller:'Post']">
+                  <span>
+                    <g:textField class="searchTextGroup col-xs-5" name="searchText" id="searchText"></g:textField>
+                    <g:submitButton class="searchTextGroup" name="searchButton" class="btn btn-info searchBtn" value="search"/>
+                  </span>
+                </g:form>
             </div>
         </div>
     </div>
