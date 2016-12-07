@@ -8,13 +8,11 @@ ul {
 }
 
 #list-post {
-
   margin: auto;
 }
 
 .comment {
   margin: auto;
-
 }
 
 .searchBtn{
@@ -45,9 +43,21 @@ ul {
   float: right;
 }
 
-.logoutBtn {
+.blogHomeTitle {
+  text-align: center;
+}
+
+.noPosts {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.loginOrOutBtn {  
   float: right;
   margin-top: 6px;
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .seperatorHr {

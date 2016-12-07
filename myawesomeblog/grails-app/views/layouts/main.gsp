@@ -32,10 +32,10 @@
           </g:form>
             <div>
                 <span ><sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_USER'>
-                  <g:link class="btn btn-default logoutBtn col-xs-2" controller='logout'>Logout</g:link>
+                  <g:link class="btn btn-default loginOrOutBtn col-xs-2" controller='logout'>Logout</g:link>
                 </sec:ifAnyGranted></span>
               <span><sec:ifNotLoggedIn>
-                <span id="loginButton"><g:link type="button" class="create btn btn-default logoutBtn col-xs-2" action="login">Log in</g:link></span>
+                <span id="loginButton"><g:link type="button" class="create btn btn-default loginOrOutBtn col-xs-2" action="login">Log in</g:link></span>
               </sec:ifNotLoggedIn></span>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>

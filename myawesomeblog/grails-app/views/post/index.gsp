@@ -17,19 +17,14 @@
           </div>
 
           <div id="list-post" class="content scaffold-list container col-xs-12" role="main">
-              <h1>Blog Home Page</h1>
+              <h1 class="blogHomeTitle">A Collection of Some of My Musings</h1><br><br>
               <g:if test="${flash.message}">
                   <div class="message" role="status">${flash.message}</div>
               </g:if>
                 <g:each class="blogListPreview" in="${this.postList?.reverse()}" name="defaultList" var="post" status="i">
 
                   <g:link mapping="searchEngineFriendlyURL" params='[title: "${post.title}"]' id="${post.id}">
-                    <g:if test="${this.searchText != null}">
-                      <p><strong class="blogTitle col-xs-10">${post.title}</strong></p>
-                    </g:if>
-                    <g:else>
-                      <p><strong class="blogTitle col-xs-10">${post.title}</strong></p>
-                    </g:else>
+                    <p><strong class="blogTitle col-xs-10">${post.title}</strong></p>
                   </g:link>
                     <p class="col-xs-10">${post?.blogBodyPreview()}
                       <br/>
