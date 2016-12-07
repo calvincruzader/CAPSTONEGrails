@@ -20,10 +20,6 @@
         <section class="row colset-2-its">
             <h1>Welcome to Grails</h1>
 
-            <p>
-				THIS IS THE MAIN PAGE WHERE ALL THE BLOGS ARE GONNA BE SHOWN AND ORDERED SOON.
-            </p>
-
             <div id="controllers" role="navigation">
                 <h2>Available Controllers:</h2>
                 <ul>

@@ -10,6 +10,7 @@ import spock.lang.Specification
 class PostSpec extends Specification {
 
     def setup() {
+      
     }
 
     def cleanup() {

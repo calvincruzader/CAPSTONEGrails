@@ -1,5 +1,8 @@
 Given(/^I visit the blog for my favorite blogger$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  visit_page Blog_Home
+  on_page Blog_Home do
+    
+  end
 end
 
 When(/^I choose a blog post$/) do

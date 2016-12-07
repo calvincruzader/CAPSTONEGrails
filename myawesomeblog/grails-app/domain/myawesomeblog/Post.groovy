@@ -11,6 +11,10 @@ class Post {
 	static belongsTo = [author:User]
 	static hasMany = [comments:Comment, posts: Post]
 
+	static mapping = {
+		sort dateCreated: "desc"
+	}
+
   static constraints = {
 		title(blank: false)
 		author(nullable: false)

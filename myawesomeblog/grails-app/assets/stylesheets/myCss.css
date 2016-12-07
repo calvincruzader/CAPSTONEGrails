@@ -10,8 +10,20 @@ ul {
   padding-bottom: 20px;
 }
 
+.blogHomeTitle {
+  font-family: Courier New;
+  font-size: 36px;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
 .commentAndCancelBtns {
     margin: 0px 0px 0px 965px;
+}
+
+.blogTitle {
+  font-size: 24px
+
 }
 
 #commentCreate {
@@ -32,9 +44,14 @@ ul {
   padding: 13px;
 }
 
+.titleAndNewPostBtn {
+  margin-top: 20px;
+}
+
 .newPostLocation {
+  margin-top: 15px;
   padding-bottom: 20px;
-  margin: 0px 0px 0px 316px;
+  margin: 0px 0px 0px 519px;
 }
 
 .showBody {
@@ -89,11 +106,6 @@ fieldset {
   width: 150px;
   text-align: center;
   padding-top: 13px;
-  float: right;
-}
-
-.blogHomeTitle {
-  text-align: center;
 }
 
 .noPosts {

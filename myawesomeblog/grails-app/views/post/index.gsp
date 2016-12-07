@@ -7,21 +7,18 @@
       </head>
       <body>
           <a href="#list-post" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-          <div class="newPostLocation container" role="navigation">
-              <ul>
 
-                  <sec:ifAnyGranted roles='ROLE_ADMIN'>
-                    <li><g:link type="button" class="col-xs-1 col-xs-offset-11 btn btn-primary newPostBtn" action="create">New Post</g:link></li>
-                  </sec:ifAnyGranted>
-              </ul>
-          </div>
 
-          <div id="list-post" class="content scaffold-list container col-xs-12" role="main">
-              <h1 class="blogHomeTitle">A Collection of Some of My Musings</h1><br><hr><br>
+          <div id="list-post" class=" scaffold-list container col-xs-12" role="main">
+              <div class="titleAndNewPostBtn"><span class="blogHomeTitle">A Collection of Some of My Musings</span>
+                <sec:ifAnyGranted roles='ROLE_ADMIN'>
+                  <g:link type="button" class="btn btn-primary newPostBtn newPostLocation" action="create">New Post</g:link></li>
+                </sec:ifAnyGranted>
+              </div><br><hr><br>
               <g:if test="${flash.message}">
                   <div class="message" role="status">${flash.message}</div>
               </g:if>
-                <g:each class="blogListPreview" in="${this.postList?.reverse()}" name="defaultList" var="post" status="i">
+                <g:each class="blogListPreview" in="${this.postList?}" name="defaultList" var="post" status="i">
 
                   <g:link mapping="searchEngineFriendlyURL" params='[title: "${post.title}"]' id="${post.id}">
                     <p><strong class="blogTitle col-xs-10">${post.title}</strong></p>
