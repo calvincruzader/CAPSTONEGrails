@@ -34,9 +34,11 @@
                     <br><br><br><br><br><br><br>
                     <hr>
                   </g:each>
-              <div id="pagination" class="pagination">
-                  <g:paginate total="${postCount ?: 0}" />
-              </div>
+                  <g:if test="${postCount > 10}">
+                    <div id="pagination" class="pagination">
+                      <g:paginate total="${postCount ?: 0}" />
+                    </div>
+                  </g:if>
           </div>
 
 

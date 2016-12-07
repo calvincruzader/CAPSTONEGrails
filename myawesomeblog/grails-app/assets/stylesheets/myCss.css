@@ -27,8 +27,14 @@ ul {
   visibility: hidden;
 }
 
+.myNavBarHeader {
+  margin: 0px 0px 3px 0px;
+  padding: 13px;
+}
+
 .newPostLocation {
   padding-bottom: 20px;
+  margin: 0px 0px 0px 316px;
 }
 
 .showBody {
