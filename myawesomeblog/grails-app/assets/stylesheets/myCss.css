@@ -12,7 +12,7 @@ ul {
 
 .blogHomeTitle {
   font-family: Courier New;
-  font-size: 36px;
+  font-size: 50px;
   margin-top: 20px;
   margin-left: 50px;
 }
@@ -29,14 +29,6 @@ ul {
 #commentCreate {
   width: 66em;
   height: 10em;
-}
-
-.commentBtn {
-  visibility: hidden;
-}
-
-.cancelBtn {
-  visibility: hidden;
 }
 
 .myNavBarHeader {

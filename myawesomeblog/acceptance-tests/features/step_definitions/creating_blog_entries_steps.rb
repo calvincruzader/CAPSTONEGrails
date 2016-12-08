@@ -1,7 +1,7 @@
 Given(/^I am logged in as a blogger$/) do
   visit_page Blog_Home
   on_page Blog_Home do |page|
-    page.goToLoginPage
+    page.goto_login
   end
   sleep 2
   on_page Login do |page|
@@ -15,20 +15,15 @@ end
 When(/^I publish a new blog post$/) do
   sleep 2
   on_page Blog_Home do |page|
-    page.makeNewPost
+    page.goto_create_post
   end
   sleep 2
   on_page Create_BlogPost do |page|
-    @title = "First awesome new blog post"
+    @title = BetterLorem.w(10, true, true)
     page.title = @title
-    page.blog_body ="Lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque justo purus, hendrerit" +
-    "vel erat molestie, bibendum ornare ex. Etiam ac diam dictum, ultricies nisi vel, suscipit metus. Praesent tempus, magna eu"+
-    "tempor euismod, nisi sapien tincidunt sapien, sit amet feugiat sapien mauris eget ipsum. Curabitur dapibus lacus a varius" +
-    "blandit. Vivamus a tortor eget sem bibendum volutpat. Morbi consequat tortor at commodo blandit. Quisque ornare pharetra"+
-    "purus eu tempus. Aliquam lacinia urna est, eu mollis turpis euismod mattis. Donec fermentum malesuada quam, et interdum purus"+
-     "efficitur et.Duis eu metus ac nibh cursus placerat et at arcu. Praesent faucibus felis ut felis e"
-     page.create_blogpost
-     sleep 2
+    page.blog_body = BetterLorem.p(10, true, false)
+    page.create_blogpost
+    sleep 2
   end
 end
 

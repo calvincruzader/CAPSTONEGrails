@@ -6,7 +6,7 @@
           <title><g:message code="default.list.label" args="[entityName]" /></title>
       </head>
       <body>
-          <div class="titleAndNewPostBtn container"><span class="blogHomeTitle">A Collection of Some of My Musings</span>
+          <div class="titleAndNewPostBtn container"><span class="blogHomeTitle">Musings</span>
             <sec:ifAnyGranted roles='ROLE_ADMIN'>
               <g:link type="button" class="btn btn-primary newPostBtn pull-right" action="create">New Post</g:link></li>
             </sec:ifAnyGranted>
@@ -19,13 +19,13 @@
             </g:if>
             <g:each in="${this.postList?}" name="defaultList" var="post" status="i">
               <div class="blogPreview${i}">
-                <g:link mapping="searchEngineFriendlyURL" params='[title: "${post.title}"]' id="${post.id}">
-                  <p><strong class="blogTitle col-xs-10">${post.title}</strong></p>
+                <g:link class="blogShowLink col-xs-10" mapping="searchEngineFriendlyURL" params='[title: "${post.title}"]' id="${post.id}">
+                  <p class="blogTitle"><strong>${post.title}</strong></p>
                 </g:link>
-                <p class="col-xs-10">${post?.blogBodyPreview()}
+                <p class="col-xs-10 blogBodyPreview">${post?.blogBodyPreview()}
                   <br/>
                   <p class="col-xs-2">-${post.author}</p>
-                  <p class="col-xs-2 pull-right"><g:formatDate format="yyyy-MM-dd HH:mm" date="${post.dateCreated}"/></p>
+                  <span class="col-xs-2 pull-right blogDate"><g:formatDate format="yyyy-MM-dd HH:mm" date="${post.dateCreated}"/></span>
                 </p>
                 <br><br><br><br><br><br><br>
                 <hr>
