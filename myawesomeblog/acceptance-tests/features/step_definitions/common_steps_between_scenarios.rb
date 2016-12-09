@@ -14,6 +14,7 @@ end
 
 When(/^I choose a blog post$/) do
   on_page Blog_Home do |page|
+    sleep 3
     @blog_portion = page.blog_preview
     sleep 2
     page.choose_blog_post

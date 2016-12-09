@@ -11,9 +11,10 @@ class PostControllerSpec extends Specification {
         assert params != null
 
 		params["title"] = "This is a title"
-		params["body"] = "Words words words"
-    params["author"] = "Me"
-    params["dateCreated"] = "SOMETHING"
+		params["body"] = "This is the body of a paragraph"
+    params["author"] = "CalvinCruzader"
+    params["dateCreated"] = new Date()
+    
 		}
 
     void "Test the index action returns the correct model"() {

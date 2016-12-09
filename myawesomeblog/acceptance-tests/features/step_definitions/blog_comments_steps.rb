@@ -1,12 +1,13 @@
 Then(/^I should see comments left by other readers$/) do
+  ##preprocessing##
   on_page Show_BlogPost do |page|
     fill_comments_with_other_readers(page)
   end
-
+  sleep 3
   on_page Blog_Home do |page|
     page.choose_blog_post
   end
-
+  sleep 2
   on_page Show_BlogPost do |page|
     expect(page.comment_by_another_reader).to include "An Interested Commentor"
   end

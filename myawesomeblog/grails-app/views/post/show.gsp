@@ -44,7 +44,7 @@
                 <hr>
                 <div class="commentDisplay"></div>
                 <hr>
-                <g:each in="${(this.post.comments.sort {it.dateCreated}).reverse()}">
+                <g:each in="${(this.post.comments.sort{it.dateCreated}).reverse()}">
                   <div class="oneComment">
                     <div>
                       <span>
@@ -63,16 +63,18 @@
             <hr>
             <div class="container blogPostShow commentBox">
               <g:formRemote action="saveComment" controller="Comment" name="saveComment" url="[controller:'Comment',action:'saveComment']">
-                <div class="col-xs-12"><span class="col-xs-2">${sec.loggedInUserInfo(field: 'username')}:</span>
-                <g:textArea name="body" class="col-xs-6" id="commentCreate" placeholder="Leave a public comment..."></g:textArea></div>
+                <div class="col-xs-12">
+                  <span class="col-xs-2">${sec.loggedInUserInfo(field: 'username')}:</span>
+                  <g:textArea name="body" params="${[body: body]}" class="col-xs-6" id="commentCreate" placeholder="Leave a public comment..."></g:textArea>
+                </div>
                 <hr>
                 <div class="col-xs-12">
                   <g:hiddenField id="commentAuthor" name="author" value="${sec.loggedInUserInfo(field: 'username')}" params="${[author: author]}"/>
                 </div>
                 <g:hiddenField name="title" value="${this.post.title}"/>
                 <div class="commentAndCancelBtns">
-                  <g:submitButton class="cancelBtn btn btn-default" value='Cancel' name='Cancel'/>
-                  <g:submitButton id="makeComment" class="btn btn-primary commentBtn" value="Comment" name="Comment"/>
+                    <g:submitButton class="cancelBtn btn btn-default" value='Cancel' name='Cancel'/>
+                    <g:submitButton id="makeComment" class="btn btn-primary commentBtn" value="Comment" name="Comment"/>
                 </div>
               </g:formRemote>
             </div>

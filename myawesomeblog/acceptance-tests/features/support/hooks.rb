@@ -9,6 +9,7 @@ require 'BetterLorem' #taken from https://github.com/caedmonjudd
 #example :
 #BetterLorem.p(10, true, false) gives 10 lorem ipsum paragraphs, has plain text, and has a trailing period
 ###
+
 include PageObject::PageFactory
 
 Before do

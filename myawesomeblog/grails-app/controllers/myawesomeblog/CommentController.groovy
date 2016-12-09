@@ -12,5 +12,4 @@ class CommentController {
       blogpost.addToComments(new Comment(author:params.author,body:params.body)).save()
       redirect(controller: "Post", action: "Show", id:blogpost.id)
     }
-
 }

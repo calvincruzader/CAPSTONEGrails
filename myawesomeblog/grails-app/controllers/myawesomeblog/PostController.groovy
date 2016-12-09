@@ -9,13 +9,6 @@ class PostController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-
-    def searchBlogs() {
-      def postList = Post.findAllByTitleIlike("%" + params.searchText + "%")
-      String searchText = params.searchText
-      render(view:'index', model: [postList: postList, searchText: searchText])
-    }
-
     def index(Integer max) {
       params.max = Math.min(max ?: 10, 100)
       respond Post.list(params), model:[postCount: Post.count()]
@@ -24,9 +17,15 @@ class PostController {
     def show(Post post) {
         respond post
     }
-
+  
     def create() {
     	respond new Post(params)
+    }
+
+    def searchBlogs() {
+      def postList = Post.findAllByTitleIlike("%" + params.searchText + "%")
+      String searchText = params.searchText
+      render(view:'index', model: [postList: postList, searchText: searchText])
     }
 
     @Transactional

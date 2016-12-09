@@ -37,8 +37,6 @@
     <div class="inner">
       <div class="fheader">Please Login</div>
 
-
-
       <form action="/login/authenticate" method="POST" id="loginForm" class="cssform" autocomplete="off">
         <p>
           <label for="username">Username:</label>

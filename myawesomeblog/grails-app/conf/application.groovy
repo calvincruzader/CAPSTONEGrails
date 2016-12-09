@@ -8,23 +8,21 @@ grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/post/index'
 grails.plugin.springsecurity.ui.register.postRegisterUrl = '/post/index'
 grails.plugin.springsecurity.successHandler.alwaysUseDefault = true
 grails.plugin.springsecurity.logout.afterLogoutUrl = '/post/index'
-
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	[pattern: '/post/index',     access: ['permitAll']],
-	[pattern: '/post/edit',      access: ['ROLE_ADMIN']],
-	[pattern: '/post/create',    access: ['ROLE_ADMIN']],
-	[pattern: '/post/delete/**',    access: ['ROLE_ADMIN']],
-	[pattern: '/post/searchBlogs',  access: ['permitAll']],
-	[pattern: '/post/save',      access: ['ROLE_ADMIN']],
-	[pattern: '/comment/**',      access: ['permitAll']],
+	[pattern: '/post/index',     			access: ['permitAll']],
+	[pattern: '/post/edit',      			access: ['ROLE_ADMIN']],
+	[pattern: '/post/create',    			access: ['ROLE_ADMIN']],
+	[pattern: '/post/delete/**',   		access: ['ROLE_ADMIN']],
+	[pattern: '/post/searchBlogs',  	access: ['permitAll']],
+	[pattern: '/post/save',      			access: ['ROLE_ADMIN']],
+	[pattern: '/comment/**',      		access: ['permitAll']],
 	[pattern: '/post/update/**',      access: ['ROLE_ADMIN']],
 
-
-	[pattern: '/post/show',      access: ['permitAll']],
-	[pattern: '/user/create',    access: ['permitAll']],
-	[pattern: '/user/show',      access: ['permitAll']],
+	[pattern: '/post/show',      			access: ['permitAll']],
+	[pattern: '/user/create',    			access: ['permitAll']],
+	[pattern: '/user/show',      			access: ['permitAll']],
 	[pattern: '/comment/saveComment', access: ['permitAll']],
-	[pattern: '/calvins-blogs/**', access: ['permitAll']],
+	[pattern: '/calvins-blogs/**', 		access: ['permitAll']],
 
 
 	[pattern: '/',               access: ['permitAll']],

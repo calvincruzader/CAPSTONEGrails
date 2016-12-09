@@ -10,51 +10,39 @@ Given(/^my favorite blogger has been very active$/) do
     page.login
   end
   sleep 2
-
   on_page Blog_Home do |page|
     page.goto_create_post
   end
   sleep 2
-
-  ##populate blog
+##populate blog because blogger is very active
   for i in 1..10
     on_page Create_BlogPost do |page|
-      @title =  BetterLorem.w(10, true, true)
-      page.title = @title
-      page.blog_body = BetterLorem.p(10, true, false)
+      page.title = BetterLorem.w(10, true, true).gsub(/[^[a-zA-Z0-9]+]/, ' ').gsub(/\s+/, ' ')
+      page.blog_body = BetterLorem.p(10, true, false).gsub(/[^[a-zA-Z0-9]+]/, ' ').gsub(/\s+/, ' ')
       page.create_blogpost
     end
-      sleep 2
+    sleep 2
     on_page Show_BlogPost do |page|
       page.goto_create_post
     end
-      sleep 2
+    sleep 2
   end
   on_page Show_BlogPost do |page|
     page.logout
-   end
-  sleep 2
+  end
+###populate comments
+sleep 2
 end
 
 Then(/^then I should see a summary of my favorite blogger's (\d+) most recent posts in reverse order$/) do |arg1|
   on_page Blog_Home do |page|
-    date_more_recent = ""
-    date_less_recent = ""
-    page.ten_most_recent_post_dates_elements.each do |post_date|
-      if (date_more_recent == "")
-        date_more_recent = post_date.text
-        next
-      elsif (date_less_recent == "")
-        date_less_recent = post_date.text
-      end
-      expect(date_more_recent).to be >= date_less_recent
-    end
+    recent_posts = page.get_this_many_recent_posts(arg1)
+    expect(reverse_order?(recent_posts)).to be true
   end
 end
 
 Then(/^I should see the blog post$/) do
   on_page Show_BlogPost do |page|
-    byebug
     expect(page.blog_post).to include @blog_portion.chomp('...')
     page.home_page
     sleep 2

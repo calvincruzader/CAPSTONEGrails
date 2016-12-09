@@ -25,7 +25,7 @@
                 <p class="col-xs-10 blogBodyPreview">${post?.blogBodyPreview()}
                   <br/>
                   <p class="col-xs-2">-${post.author}</p>
-                  <span class="col-xs-2 pull-right blogDate"><g:formatDate format="yyyy-MM-dd HH:mm" date="${post.dateCreated}"/></span>
+                  <span class="col-xs-2 pull-right blogDate"><g:formatDate format="yyyy-MM-dd HH:mm:ss" date="${post.dateCreated}"/></span>
                 </p>
                 <br><br><br><br><br><br><br>
                 <hr>

@@ -19,9 +19,9 @@ When(/^I publish a new blog post$/) do
   end
   sleep 2
   on_page Create_BlogPost do |page|
-    @title = BetterLorem.w(10, true, true)
-    page.title = @title
-    page.blog_body = BetterLorem.p(10, true, false)
+    @blog_title = BetterLorem.w(10, true, true).gsub(/[^[a-zA-Z0-9]+]/, ' ').gsub(/\s+/, ' ')
+    page.title = @blog_title
+    page.blog_body = BetterLorem.p(10, true, false).gsub(/[^[a-zA-Z0-9]+]/, ' ').gsub(/\s+/, ' ')
     page.create_blogpost
     sleep 2
   end
@@ -29,15 +29,15 @@ end
 
 Then(/^I am notified that the blog post was successfully added$/) do
   on_page Show_BlogPost do |page|
-    expect(page.blogpost_notification).to include(@title, "created")
+    sleep 2
+    expect(page.blogpost_notification).to include("created")
     page.home_page
     sleep 2
   end
 end
 
 Then(/^the newly added blog post is at the top of the recent posts list$/) do
-  #check that the blog post at the top of the recent posts list
   on_page Blog_Home do |page|
-    expect(page.first_blogpost).to include(@title)
+    expect(page.first_blogpost).to include(@blog_title)
   end
 end
